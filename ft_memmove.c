@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 09:29:02 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/10 09:29:51 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:46:57 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	d = (char *) dst;
 	s = (char *) src;
 	i = 0;
-	if (dst <= src)
+	if (dst == src || len == 0)
+		return (dst);
+	if (dst < src)
 	{
-		while (len > i)
+		while (len--)
 		{
-			d[i] = s[i];
+			*(d + i) = *(s + i);
 			i++;
 		}
 	}
 	else
 	{
 		while (len--)
-		{
 			*(d + len) = *(s + len);
-		}
 	}
 	return (dst);
 }

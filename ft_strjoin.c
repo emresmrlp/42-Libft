@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 22:39:11 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/10 13:20:35 by ysumeral         ###   ########.fr       */
+/*   Created: 2024/10/10 21:56:30 by ysumeral          #+#    #+#             */
+/*   Updated: 2024/10/10 22:10:16 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
+	size_t	j;
+	char	*buffer;
 
 	i = 0;
-	while (s[i] != '\0')
+	j = 0;
+	buffer = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (buffer == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		buffer[i] = s1[i];
 		i++;
-	return (i);
+	}
+	while (s2[j] != '\0')
+	{
+		buffer[i] = s2[j];
+		i++;
+		j++;
+	}
+	buffer[i] = '\0';
+	return (buffer);
 }
