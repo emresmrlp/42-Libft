@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:10:44 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/11 00:59:18 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:36:33 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	size_t	counter;
+	size_t	start;
+	size_t	end;
 	char	*buffer;
 
-	i = 0;
-	counter = 0;
-	while (s1[i] != '\0')
-	buffer = (char *)malloc((ft_strlen(s1) - counter) + 1);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		j = 0;
-		while (set[j] != s1[i] && set[j] != '\0')
-			j++;
-		if (s1[i] != set[j])
-			buffer[i] = s1[i];
-		i++;
-	}
-	buffer[i] = '\0';
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (start <= end && ft_strchr(set, s1[start]))
+		start++;
+	if (start > end)
+		return (ft_strdup(s1 + end + 1));
+	while (end > start && ft_strchr(set, s1[end]))
+		end--;
+	buffer = (char *)malloc(end - start + 2);
+	if (buffer == NULL)
+		return (NULL);
+	ft_strlcpy(buffer, &s1[start], end - start + 2);
 	return (buffer);
 }
