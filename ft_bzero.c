@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:40:47 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/07 15:29:10 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:45:34 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_bzero(void *s, size_t n)
 	p = (unsigned char *) s;
 	i = 0;
 	while (i < n)
-		p[i++] = '0';
+		p[i++] = 0;
 }

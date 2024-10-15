@@ -6,43 +6,53 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 02:07:33 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/14 19:47:12 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/15 19:01:56 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t   ft_count_words(const char *s, char c)
+static size_t	ft_count_words(const char *s, char c)
 {
 	size_t	counter;
 
 	counter = 0;
-	while (*s == '\0')
+	while (*s)
 	{
-		if (*s == c && *(s + 1) != '\0' && *(s + 1) == c)
+		while (*s == c)
+			s++;
+		if (*s)
 			counter++;
-		s++;
+		while (*s != c && *s)
+			s++;
 	}
 	return (counter);
-}
-
-static char	*ft_malloc_word()
-{
-	
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**buffer;
-	size_t	counter;
+	size_t	word_len;
+	size_t	i;
 
-	counter = ft_count_words(s, c);
-	buffer = (char **)malloc((counter * sizeof(char **)) + 1);
-	buffer[counter + 1] = NULL;
-	while (counter > 0)
+	i = 0;
+	buffer = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (buffer == NULL)
+		return (NULL);
+	while (*s)
 	{
-		
-		counter--;
+		while (*s == c && *s)
+			s++;
+		if (*s)
+		{
+			if (ft_strchr(s, c) == NULL)
+				word_len = ft_strlen(s);
+			else
+				word_len = ft_strchr(s, c) - s;
+			buffer[i++] = ft_substr(s, 0, word_len);
+			s += word_len;
+		}
 	}
+	buffer[i] = NULL;
 	return (buffer);
 }

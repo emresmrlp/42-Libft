@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 01:31:24 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/11 02:06:21 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/15 21:01:29 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else if (n < 0)
+	if (n < 0)
 	{
+		if (n == -2147483648)
+		{
+			ft_putstr_fd("-2147483648", fd);
+			return ;
+		}
 		n *= -1;
 		ft_putchar_fd('-', fd);
 	}
