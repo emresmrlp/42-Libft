@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:10:44 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/13 19:36:33 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:48:00 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*buffer;
 
 	start = 0;
+	if (ft_strlen(s1) == 0)
+	{
+		buffer = malloc(1);
+		if (buffer == NULL)
+			return (NULL);
+		buffer[0] = '\0';
+		return (buffer);
+	}
 	end = ft_strlen(s1) - 1;
 	while (start <= end && ft_strchr(set, s1[start]))
 		start++;

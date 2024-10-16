@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 04:48:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/12 18:58:51 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:07:24 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ char	*ft_itoa(int n)
 	char	*buffer;
 
 	len = ft_getlen(n);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	buffer = malloc(len + 1);
 	if (buffer == NULL)
 		return (NULL);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	buffer[len] = '\0';
 	if (n < 0)
 	{

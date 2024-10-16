@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:14:03 by ysumeral          #+#    #+#             */
-/*   Updated: 2024/10/15 21:03:01 by ysumeral         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:52:32 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	slen;
 
-	slen = ft_strlen(s) + 1;
+	slen = ft_strlen(s);
 	while (*(s + slen) != (char)c && slen > 0)
 		slen--;
 	if (*(s + slen) == (char)c)
